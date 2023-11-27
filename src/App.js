@@ -1,23 +1,19 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import ResponsiveAppBar from './SideBar/sideBar';
+import ModalCmp from './sideModal';
+import TravelCardsCmp from './travelCards';
 
 function App() {
+
+  const [open, setOpen] = React.useState(false);
+  const [places1, setPlaces1] = useState([]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <ModalCmp open={open} handleClose={() => setOpen(false)} places1={places1} />
+      <ResponsiveAppBar setOpen={setOpen} />
+      <TravelCardsCmp setPlaces1={setPlaces1} />
     </div>
   );
 }
